@@ -42,7 +42,7 @@
 * 其中官方版的OC中我会提供两个版本
   * OC-Intel适合没有更换无线网卡的用户使用（即使用英特尔3165的用户，已经驱动了wifi和蓝牙）wifi驱动会在后面有详细使用说明
   * OC-Broadcom适合使用dw1560无线网卡的用户使用
-  ## 安装说明
+## 安装说明
   * 下载releases中的refind.zip和OC-Intel.zip或OC-Boardcom.zip，分别将这两个文件夹解压到EFI中，其中OC-Intel.zip/OC-Boardcom.zip解压出来对应OC-Intel/OC-Boardcom，这两个文件夹中均有OC文件夹，将OC文件夹复制到EFi中，添加的启动项为refind文件夹中的Bootx64.efi并使用该启动项启动。在你充分理解之前OC启动项文件夹名称只能为OC
     * 如果使用OC启动后下次重启直接通过OC引导到MacOS，开机进bios调节启动项即可，不要删除，否则还会自动生成。
 # 安装注意事项（部分节选自Doapeat维护更新的[7567Clover版本](https://github.com/Doapeat/Dell7567)和[黑果小兵的部落阁](https://blog.daliansky.net/OpenCore-BootLoader.html)）
