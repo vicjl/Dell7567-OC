@@ -32,17 +32,27 @@
 
 # 简述
 * 这是一个适用于Dell7567机型的OpenCore版本驱动，因为没有数据供参考所以仍处于测试阶段，在本人笔记本上测试是没有问题的。
-* 官方OpenCore需搭配rEFInd使用。双系统则可以直接使用NDK版本。
+* 官方OpenCore需搭配rEFInd使用。双系统则可以直接使用NDK版本。两个OC版本均会提供，根据个人喜好选择即可。
 * 我会提供rEFInd引导，想要直接使用，efi中OC的文件名必须为OC且该文件夹中必须有bootx64.efi，Clover文件名必须为Clover，rEFInd中各项配置的作用后面会有说明。
 * 目前为止，包括i2c触控板，亮度快捷键，睡眠唤醒，耳麦，2.1声道都是完美的，使用过程中如果遇到什么问题请在群中交流或提交Issues。
 * 有关风扇的问题，因为切换到了VirtualSMC，所以目前没有办法采集到风扇信息，但是不会影响风扇正常运转。目前没有解决方案，一旦有解决方案我会同步更新。
 * 该项目使用ComboJack作为耳麦驱动，需要使用ComboJack_For_Dell7567_Only中的文件安装切换弹窗部分，详细安装说明包含在文件中。
 * 注意，在睡眠唤醒后低音炮可能会无声，调节一下音量即可。
 ## 文件说明
-* 该小节仍在完善中
+* OC-A为官方版本，OC-NDK为NDK修改版，选择你想使用的版本将文件夹重命名为OC，这两个版本的区别会在后面说明
+* ACPI-Public文件夹中的文件是两个版本都会使用到的acpi补丁，将该文件夹中的所有文件移动到OC/ACPI中
+* Kexts-All文件夹中共有三部分组成，分别为Kexts-Public, Kexts-Intel和Kexts-Boardcom
+  * Kexts-Public为共用驱动，将文件夹中的所有文件复制到OC/Kexts中; 
+  * Kexts-Intel为英特尔网卡所需的WI-FI驱动和蓝牙驱动，使用原装网卡（3165）的用户将该文件夹下的文件复制到OC/Kexts中; 
+  * Kexts-Boardcom为博通网卡所需的驱动，使用博通网卡的用户将文件夹中的文件复制到OC/Kexts中
+* refind则为rEFInd引导，使用原版OC（即OC-A）的用户需要使用该引导。
+* config配置文件有两个分别为config-Brcm.plist和config-Intel.plist，使用时根据自己的需要将名称改为config.plist其中：
+  * config-Brcm.plist为博通网卡用户使用
+  * config-Intel.plist为英特尔网卡（即原装网卡3165）使用
 ## 安装说明
-  * 下载releases中的refind.zip和OC-Intel.zip或OC-Boardcom.zip，分别将这两个文件夹解压到EFI中，其中OC-Intel.zip/OC-Boardcom.zip解压出来对应OC-Intel/OC-Boardcom，这两个文件夹中均有OC文件夹，将OC文件夹复制到EFi中，添加的启动项为refind文件夹中的Bootx64.efi并使用该启动项启动。在你充分理解之前OC启动项文件夹名称只能为OC
-    * 如果使用OC启动后下次重启直接通过OC引导到MacOS，开机进bios调节启动项即可，不要删除，否则还会自动生成。
+* 该小节仍在完善中
+* 下载releases中的refind.zip和OC-Intel.zip或OC-Boardcom.zip，分别将这两个文件夹解压到EFI中，其中OC-Intel.zip/OC-Boardcom.zip解压出来对应OC-Intel/OC-Boardcom，这两个文件夹中均有OC文件夹，将OC文件夹复制到EFi中，添加的启动项为refind文件夹中的Bootx64.efi并使用该启动项启动。在你充分理解之前OC启动项文件夹名称只能为OC
+* 如果使用OC启动后下次重启直接通过OC引导到MacOS，开机进bios调节启动项即可，不要删除，否则还会自动生成。
 # 安装注意事项（部分节选自Doapeat维护更新的[7567Clover版本](https://github.com/Doapeat/Dell7567)和[黑果小兵的部落阁](https://blog.daliansky.net/OpenCore-BootLoader.html)）
 * BIOS设置:
     * 设置 `SATA Mode`为 `AHCI` ，自行百度；
