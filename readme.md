@@ -1,6 +1,6 @@
 <img src="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Logos/OpenCore_with_text_Small.png" width="200" height="48"/>
 
-## ***使用前请仔细阅读该文本，着重简述及阅读目录中标注有重要字样的章节***
+## ***使用前请仔细阅读该文本，着重阅读简述及目录中标注有重要字样的章节***
 * 目前仍在完善中
 * 交流QQ群：320693336进群验证为机型加OC，例：Dell7567-OC
 # 配置详情
