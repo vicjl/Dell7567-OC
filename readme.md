@@ -21,6 +21,7 @@
   * [解决Clover和OpenCore的冲突 ***重要*** ](#解决-clover-和-opencore-的冲突)
   * [重置NVRAM ***重要*** ](#重置硬件nvram)
   * [解锁CFG ***重要*** ](#解锁cfg建议解锁)
+  * [OC中的原生开机快捷键组合 ***重要***](#OC中的原生开机快捷键组合)
 * [英特尔wifi使用方法说明](#英特尔wifi使用方法说明)
 * [rEFInd配置说明](#refind配置说明节选自远景论坛)
 * [打赏](#你的打赏-是我更新的最大动力satisfied)
@@ -32,27 +33,31 @@
 
 # 简述
 * 这是一个适用于Dell7567机型的OpenCore版本驱动，因为没有数据供参考所以仍处于测试阶段，在本人笔记本上测试是没有问题的。
-* 官方OpenCore需搭配rEFInd使用。双系统则可以直接使用NDK版本。两个OC版本均会提供，根据个人喜好选择即可。
-* 我会提供rEFInd引导，想要直接使用，efi中OC的文件名必须为OC且该文件夹中必须有bootx64.efi，Clover文件名必须为Clover，rEFInd中各项配置的作用后面会有说明。
+* 官方OpenCore ~~需搭配rEFInd使用~~ 已经可以引导Windows。双系统则可以直接使用NDK版本。
+* ~~我会提供rEFInd引导，想要直接使用，efi中OC的文件名必须为OC且该文件夹中必须有bootx64.efi，Clover文件名必须为Clover，rEFInd中各项配置的作用后面会有说明。~~ 不再提供rEFInd引导，配置说明会保留，可自行配置。
+* 目前的官方OpenCore引导Windows已知问题是：会使QuickSet64中部分（显示Fn锁和数字键盘锁的托盘图标）失效。如果介意请使用NDK版本。
 * 目前为止，包括i2c触控板，亮度快捷键，睡眠唤醒，耳麦，2.1声道都是完美的，使用过程中如果遇到什么问题请在群中交流或提交Issues。
 * 有关风扇的问题，因为切换到了VirtualSMC，所以目前没有办法采集到风扇信息，但是不会影响风扇正常运转。目前没有解决方案，一旦有解决方案我会同步更新。
 * 该项目使用ComboJack作为耳麦驱动，需要使用ComboJack_For_Dell7567_Only中的文件安装切换弹窗部分，详细安装说明包含在文件中。
 * 注意，在睡眠唤醒后低音炮可能会无声，调节一下音量即可。
 ## 文件说明
-* OC-A为官方版本，OC-NDK为NDK修改版，选择你想使用的版本将文件夹重命名为OC，这两个版本的区别会在后面说明
+
+* OC-A为官方版本，OC-NDK为NDK修改版，两者均可引导双系统，但是官方版本目前有个小bug，上面已经说明。
 * ACPI-Public文件夹中的文件是两个版本都会使用到的acpi补丁，将该文件夹中的所有文件移动到OC/ACPI中
 * Kexts-All文件夹中共有三部分组成，分别为Kexts-Public, Kexts-Intel和Kexts-Boardcom
-  * Kexts-Public为共用驱动，将文件夹中的所有文件复制到OC/Kexts中; 
-  * Kexts-Intel为英特尔网卡所需的WI-FI驱动和蓝牙驱动，使用原装网卡（3165）的用户将该文件夹下的文件复制到OC/Kexts中; 
+  * Kexts-Public为共用驱动，将文件夹中的所有文件复制到OC/Kexts中;
+  * Kexts-Intel为英特尔网卡所需的WI-FI驱动和蓝牙驱动，使用原装网卡（3165）的用户将该文件夹下的文件复制到OC/Kexts中;
   * Kexts-Boardcom为博通网卡所需的驱动，使用博通网卡的用户将文件夹中的文件复制到OC/Kexts中
-* refind则为rEFInd引导，使用原版OC（即OC-A）的用户需要使用该引导。
 * config配置文件有两个分别为config-Brcm.plist和config-Intel.plist，使用时根据自己的需要将名称改为config.plist其中：
   * config-Brcm.plist为博通网卡用户使用
   * config-Intel.plist为英特尔网卡（即原装网卡3165）使用
+
 ## 安装说明
+
 * 该小节仍在完善中
-* 下载releases中的refind.zip和OC-Intel.zip或OC-Boardcom.zip，分别将这两个文件夹解压到EFI中，其中OC-Intel.zip/OC-Boardcom.zip解压出来对应OC-Intel/OC-Boardcom，这两个文件夹中均有OC文件夹，将OC文件夹复制到EFi中，添加的启动项为refind文件夹中的Bootx64.efi并使用该启动项启动。在你充分理解之前OC启动项文件夹名称只能为OC
-* 如果使用OC启动后下次重启直接通过OC引导到MacOS，开机进bios调节启动项即可，不要删除，否则还会自动生成。
+* 选择一个你想用的OC版本，将OC-X中的BOOT和OC两个文件夹复制到EFI中，添加引导时添加BOOT中的BOOTx64.efi即可。
+* 按[文件说明](#文件说明)补全ACPI、Kexts；并将config-XX.plist改名为config.plist
+
 # 安装注意事项（部分节选自Doapeat维护更新的[7567Clover版本](https://github.com/Doapeat/Dell7567)和[黑果小兵的部落阁](https://blog.daliansky.net/OpenCore-BootLoader.html)）
 * BIOS设置:
     * 设置 `SATA Mode`为 `AHCI` ，自行百度；
@@ -62,22 +67,24 @@
     * 关闭 SGX；
 * `CPU变频驱动:`  7700HQ和7300HQ都已经定制了`14,1`机型的CPUFriend；需要自行定制的[看这里](https://github.com/stevezhengshiqi/one-key-cpufriend/blob/master/README_CN.md)；
 * 自己（Doapeat）写了一些方便的脚本方便大家使用，在`Scripts`文件夹内，自行选择使用
-### 需要注意，因为目前没有更多数据供参考，所以我推荐各位在使用Clover安装完成、解锁CFG、并可开机后再切换到OpenCore，保留Clover引导项以备不时之需
+### 需要注意，因为目前没有更多数据供参考， 所以我推荐各位在使用Clover安装完成、解锁CFG、并可开机后再切换到OpenCore，保留Clover引导项以备不时之需
 
 ## 解决 Clover 和 OpenCore 的冲突
 ### 清理Clover残留
 #### 如果使用了Scripts中的脚本（清理Clover残留(Clover换OC用).command）进行清理，可以忽略这一小节，推荐使用脚本清理，方便快捷
-* 删除 Clover 设置面板
-  * Clover 设置面板会和 OpenCore 产生冲突, 需要删除
-  * Clover 设置面板位于 /Library/PreferencePanes/Clover.prefPane
-  * 终端输入 sudo rm -rf /Library/PreferencePanes/Clover.prefPane 删除
-  * 清理 Clover 的模拟 NVRAM RC 脚本 和 守护程序 CloverDaemonNew
+
+```
+删除 Clover 设置面板
+  Clover 设置面板会和 OpenCore 产生冲突, 需要删除
+  Clover 设置面板位于 /Library/PreferencePanes/Clover.prefPane
+  终端输入 sudo rm -rf /Library/PreferencePanes/Clover.prefPane 删除
+  清理 Clover 的模拟 NVRAM RC 脚本 和 守护程序 CloverDaemonNew
 
 在终端中输入:
-* 删除 ESP 分区下的 nvram.plist
+删除 ESP 分区下的 nvram.plist
 rm -rf /Volumes/(你的 ESP 分区)/nvram.plist
 
-* 删除 RC 脚本
+删除 RC 脚本
 rm -rf "/etc/rc.clover.lib"
 rm -rf "/etc/rc.boot.d/10.save_and_rotate_boot_log.local"
 rm -rf "/etc/rc.boot.d/20.mount_ESP.local"
@@ -87,23 +94,26 @@ rm -rf "/etc/rc.shutdown.local"
 rm -rf "/etc/rc.boot.d"
 rm -rf "/etc/rc.shutdown.d"
 
-* 删除 Clover 新开发的 NVRAM 守护程序 `CloverDaemonNew`
+删除 Clover 新开发的 NVRAM 守护程序 `CloverDaemonNew`
 launchctl unload '/Library/LaunchDaemons/com.slice.CloverDaemonNew.plist'
 rm -rf '/Library/LaunchDaemons/com.slice.CloverDaemonNew.plist'
 rm -rf '/Library/Application Support/Clover/CloverDaemonNew'
 rm -rf '/Library/Application Support/Clover/CloverLogOut'
 rm -rf '/Library/Application Support/Clover/CloverWrapper.sh'
 
+```
+
 ### 重置「硬件」NVRAM
 * 为了尽可能减少问题出现的概率, 建议在 Clover 和 OpenCore 之间切换时重置「硬件」NVRAM
-* 推荐通过 Clover F11 清除
-* 重启进入 Clover 引导项选择界面然后按下 F11 或 Fn+F11 即可重置NVRAM
-
-开机直接选择 UEFI 引导项进入 rEFInd
+* 可以通过 Clover F11 清除
+  * 重启进入 Clover 引导项选择界面然后按下 F11 或 Fn+F11 即可重置NVRAM
+* 可以通过OC清除
+  * 进入OC界面按空格显示隐藏项选择Reset NVRAM
+  * 该操作可能会使启动项清空，自行再次添加即可
 
 ## 解锁CFG（建议解锁）
 #### 需要注意，这个可能会有损坏硬件的风险（只要正常操作几乎不会）如果因此出现硬件损坏问题本人概不负责
-#### 需要注意，该版本适用于已解锁CFG的7567上使用，未解锁CFG的用户使用该OC版本可能会出问题
+#### 需要注意，该版本适用于已解锁CFG的7567上使用，未解锁CFG的用户使用该OC版本 ~~可能~~ 一定会出问题。
 * 在此处提供一个简单的方法
 ### 机型不是Dell 7567，请不要看下面的方法；
 ### 升级BIOS不一定会重新锁定CFG，自行校验！
@@ -123,6 +133,16 @@ rm -rf '/Library/Application Support/Clover/CloverWrapper.sh'
 
 至此解锁完成！顺便把`启用HWP`勾上！
 ### 通用方法详见Doapeat的[README.md](https://github.com/Doapeat/Dell7567)
+
+## OC中的原生开机快捷键组合
+
+`Cmd + V`: 启用 -v 跑码
+`Cmd + Opt + P + R`: 重置 NVRAM
+`Cmd + R`: 启动恢复分区
+`Cmd + S`: 启动至单用户模式
+`Option / ALT`: 在 ShowPicker 设置成 NO 时显示引导项选择界面, ALT 不可用时可用 ESC 键代替
+`Cmd + C + 减号`: 关闭主板兼容性检查, 等同于添加引导标识符 -no_compat_check
+`Shift`: 安全模式
 
 # 英特尔wifi使用方法说明
 ### （驱动选用了zxystd的itlwm，详见[远景论坛](http://bbs.pcbeta.com/viewthread-1848662-1-1.html)；[Github](https://github.com/zxystd/itlwm)）
@@ -219,6 +239,7 @@ include themes/Regular/theme-2K-dark.conf
 
 # 更新日志
 * 2020.6.16 更新第一版
+* 2020.6.18 第二版，修改，添加，删除部分ACPI补丁；更新官方OpenCore，可以引导Windows但会有bug，详情简述里有说明；去除ApfsDriverLoader.efi，改为使用OC嵌入式驱动；
 
 # 图集
 
@@ -239,7 +260,7 @@ include themes/Regular/theme-2K-dark.conf
 # Credits
 * Acidanthera团队的Opencore
 * Doapeat维护的Dell7567 Clover
-* VicQ维护的Dell7567 OpenCore
+* VicQ维护的Dell7567-OC
 * 宪武制作的OC-Little补丁
 
 # 感谢浏览！
