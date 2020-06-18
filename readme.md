@@ -136,13 +136,13 @@ rm -rf '/Library/Application Support/Clover/CloverWrapper.sh'
 
 ## OC中的原生开机快捷键组合
 
-`Cmd + V`: 启用 -v 跑码
-`Cmd + Opt + P + R`: 重置 NVRAM
-`Cmd + R`: 启动恢复分区
-`Cmd + S`: 启动至单用户模式
-`Option / ALT`: 在 ShowPicker 设置成 NO 时显示引导项选择界面, ALT 不可用时可用 ESC 键代替
-`Cmd + C + 减号`: 关闭主板兼容性检查, 等同于添加引导标识符 -no_compat_check
-`Shift`: 安全模式
+* `Cmd + V`: 启用 -v 跑码
+* `Cmd + Opt + P + R`: 重置 NVRAM
+* `Cmd + R`: 启动恢复分区
+* `Cmd + S`: 启动至单用户模式
+* `Option / ALT`: 在 ShowPicker 设置成 NO 时显示引导项选择界面, ALT 不可用时可用 ESC 键代替
+* `Cmd + C + 减号`: 关闭主板兼容性检查, 等同于添加引导标识符 -no_compat_check
+* `Shift`: 安全模式
 
 # 英特尔wifi使用方法说明
 ### （驱动选用了zxystd的itlwm，详见[远景论坛](http://bbs.pcbeta.com/viewthread-1848662-1-1.html)；[Github](https://github.com/zxystd/itlwm)）
