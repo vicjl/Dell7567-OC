@@ -57,7 +57,7 @@
 * 该小节仍在完善中
 * 选择一个你想用的OC版本，将OC-X中的BOOT和OC两个文件夹复制到EFI中，添加引导时添加BOOT中的BOOTx64.efi即可。
 * 按[文件说明](#文件说明)补全ACPI、Kexts；并将config-XX.plist改名为config.plist
-
+* 使用方向键选择启动项后，按`Ctrl+Enter`键可以选择该项为默认启动项
 # 安装注意事项（部分节选自Doapeat维护更新的[7567Clover版本](https://github.com/Doapeat/Dell7567)和[黑果小兵的部落阁](https://blog.daliansky.net/OpenCore-BootLoader.html)）
 * BIOS设置:
     * 设置 `SATA Mode`为 `AHCI` ，自行百度；
