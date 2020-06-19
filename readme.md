@@ -1,6 +1,6 @@
 <img src="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Logos/OpenCore_with_text_Small.png" width="200" height="48"/>
 
-## ***使用前请仔细阅读该文本，着重阅读简述及目录中标注有重要字样的章节***
+## ***使用前请仔细阅读该文本，着重阅读简述及安装注意事项***
 * 目前仍在完善中
 * 交流QQ群：320693336进群验证为机型加OC，例：Dell7567-OC
 # 配置详情
@@ -17,11 +17,11 @@
 ****
 # 目录
 * [简述](#简述)
-* [安装注意事项 ***非常重要***](#安装注意事项部分节选自doapeat维护更新的7567clover版本和黑果小兵的部落阁)
-  * [解决Clover和OpenCore的冲突 ***重要*** ](#解决-clover-和-opencore-的冲突)
-  * [重置NVRAM ***重要*** ](#重置硬件nvram)
-  * [解锁CFG ***重要*** ](#解锁cfg建议解锁)
-  * [OC中的原生开机快捷键组合 ***重要***](#OC中的原生开机快捷键组合)
+* [安装注意事项 ***重要***](#安装注意事项部分节选自doapeat维护更新的7567clover版本和黑果小兵的部落阁)
+  * [解决Clover和OpenCore的冲突 ](#解决-clover-和-opencore-的冲突)
+  * [重置NVRAM](#重置硬件nvram)
+  * [解锁CFG ](#解锁cfg建议解锁)
+  * [OC中的原生开机快捷键组合](#OC中的原生开机快捷键组合)
 * [英特尔wifi使用方法说明](#英特尔wifi使用方法说明)
 * [rEFInd配置说明](#refind配置说明节选自远景论坛)
 * [打赏](#你的打赏-是我更新的最大动力satisfied)
@@ -40,6 +40,7 @@
 * 有关风扇的问题，因为切换到了VirtualSMC，所以目前没有办法采集到风扇信息，但是不会影响风扇正常运转。目前没有解决方案，一旦有解决方案我会同步更新。
 * 该项目使用ComboJack作为耳麦驱动，需要使用ComboJack_For_Dell7567_Only中的文件安装切换弹窗部分，详细安装说明包含在文件中。
 * 注意，在睡眠唤醒后低音炮可能会无声，调节一下音量即可。
+****
 ## 文件说明
 
 * OC-A为官方版本，OC-NDK为NDK修改版，两者均可引导双系统，但是官方版本目前有个小bug，上面已经说明。
@@ -54,7 +55,8 @@
 
 ## 安装说明
 
-* 该小节仍在完善中
+#### 该小节仍在完善中
+#### 目前仍在测试，文件会有变动，未来几次的版本更迭建议将上一版的文件全部删除
 * 选择一个你想用的OC版本，将OC-X中的BOOT和OC两个文件夹复制到EFI中，添加引导时添加BOOT中的BOOTx64.efi即可。
 * 按[文件说明](#文件说明)补全ACPI、Kexts；并将config-XX.plist改名为config.plist
 * 使用方向键选择启动项后，按`Ctrl+Enter`键可以选择该项为默认启动项
@@ -259,8 +261,19 @@ include themes/Regular/theme-2K-dark.conf
 
 # Credits
 * Acidanthera团队的Opencore
+
 * Doapeat维护的Dell7567 Clover
+
 * VicQ维护的Dell7567-OC
+
 * 宪武制作的OC-Little补丁
+
+* Daliansky的部分OpenCore详解
+
+* XJN的部分OpenCore详解
+
+* SukkaW的`从Clover到OpenCore`
+
+  
 
 # 感谢浏览！
