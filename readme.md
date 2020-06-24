@@ -3,6 +3,14 @@
 ## ***使用前请仔细阅读该文本，着重阅读简述及安装注意事项***
 * 目前仍在完善中
 * 交流QQ群：320693336进群验证为机型加OC，例：Dell7567-OC
+****
+* Dell7567-OC Release版本：[![Release](https://img.shields.io/github/v/release/vicjl/Dell7567-OC?color=green&include_prereleases&label=Release)](https://github.com/vicjl/Dell7567-OC/releases)
+* OpenCore版本：[![Release](https://img.shields.io/github/v/release/acidanthera/OpenCorePkg?color=green&include_prereleases&label=Release)](https://github.com/acidanthera/OpenCorePkg/releases)
+OpenCore每日自动构建版本：[![Release](https://img.shields.io/github/v/release/williambj1/OpenCore-Factory?color=orange&include_prereleases&label=Release)](https://github.com/williambj1/OpenCore-Factory/releases)
+* Clover版本：[![Release](https://img.shields.io/github/v/release/CloverHackyColor/CloverBootloader?color=green&include_prereleases&label=Release)](https://github.com/CloverHackyColor/CloverBootloader/releases)
+* Lilu版本：[![Release](https://img.shields.io/github/v/release/acidanthera/Lilu?color=blue&include_prereleases&label=Release)](https://github.com/acidanthera/Lilu/releases)
+VirtualSMC版本：[![Release](https://img.shields.io/github/v/release/acidanthera/VirtualSMC?color=blue&include_prereleases&label=Release)](https://github.com/acidanthera/VirtualSMC/releases)
+****
 # 配置详情
 | 配置 / Hardware | 详情 / Detail|
 | ------ | ------ |
@@ -43,6 +51,7 @@
 ****
 ## 文件说明
 
+* .DS_Store全称Desktop Services Store，是Mac OS中保存文件夹自定义属性的隐藏文件，目的在于存贮文件夹的自定义属性，例如文件图标位置、视图设置，或背景色等，相当于Windows下的 desktop.ini。由于我的OpenCore是在MacOS下更新的，所以每个文件夹中都会有这个文件，无视即可。
 * OC-A为官方版本，OC-NDK为NDK修改版，两者均可引导双系统，但是官方版本目前有个小bug，上面已经说明。
 * ACPI-Public文件夹中的文件是两个版本都会使用到的acpi补丁，将该文件夹中的所有文件移动到OC/ACPI中
 * Kexts-All文件夹中共有三部分组成，分别为Kexts-Public, Kexts-Intel和Kexts-Boardcom
