@@ -7,6 +7,7 @@
 * Dell7567-OC Release版本：[![Release](https://img.shields.io/github/v/release/vicjl/Dell7567-OC?color=green&include_prereleases&label=Release)](https://github.com/vicjl/Dell7567-OC/releases)
 * OpenCore版本：[![Release](https://img.shields.io/github/v/release/acidanthera/OpenCorePkg?color=green&include_prereleases&label=Release)](https://github.com/acidanthera/OpenCorePkg/releases)
 OpenCore每日自动构建版本：[![Release](https://img.shields.io/github/v/release/williambj1/OpenCore-Factory?color=orange&include_prereleases&label=Release)](https://github.com/williambj1/OpenCore-Factory/releases)
+* OpenCore NDK版本：[![Release](https://img.shields.io/github/v/release/n-d-k/OpenCorePkg?color=green&include_prereleases&label=Release)](https://github.com/n-d-k/OpenCorePkg/releases)
 * Clover版本：[![Release](https://img.shields.io/github/v/release/CloverHackyColor/CloverBootloader?color=green&include_prereleases&label=Release)](https://github.com/CloverHackyColor/CloverBootloader/releases)
 * Lilu版本：[![Release](https://img.shields.io/github/v/release/acidanthera/Lilu?color=blue&include_prereleases&label=Release)](https://github.com/acidanthera/Lilu/releases)
 VirtualSMC版本：[![Release](https://img.shields.io/github/v/release/acidanthera/VirtualSMC?color=blue&include_prereleases&label=Release)](https://github.com/acidanthera/VirtualSMC/releases)
