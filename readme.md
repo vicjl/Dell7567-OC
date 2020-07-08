@@ -46,7 +46,7 @@ VirtualSMC版本：[![Release](https://img.shields.io/github/v/release/acidanthe
 * ~~我会提供rEFInd引导，想要直接使用，efi中OC的文件名必须为OC且该文件夹中必须有bootx64.efi，Clover文件名必须为Clover，rEFInd中各项配置的作用后面会有说明。~~ 不再提供rEFInd引导，配置说明会保留，可自行配置。
 * 目前的官方OpenCore引导Windows已知问题是：会使QuickSet64中部分（显示Fn锁和数字键盘锁的托盘图标）失效。如果介意请使用NDK版本。
 * 目前为止，包括i2c触控板，亮度快捷键，睡眠唤醒，耳麦，2.1声道都是完美的，使用过程中如果遇到什么问题请在群中交流或提交Issues。
-* 有关风扇的问题，因为切换到了VirtualSMC，所以目前没有办法采集到风扇信息，但是不会影响风扇正常运转。目前没有解决方案，一旦有解决方案我会同步更新。
+* 有关风扇的问题，~~因为切换到了VirtualSMC，所以目前没有办法采集到风扇信息，但是不会影响风扇正常运转。目前没有解决方案，一旦有解决方案我会同步更新。~~ 目前双风扇均已显示转速并可控。
 * 该项目使用ComboJack作为耳麦驱动，需要使用ComboJack_For_Dell7567_Only中的文件安装切换弹窗部分，详细安装说明包含在文件中。
 * 注意，在睡眠唤醒后低音炮可能会无声，调节一下音量即可。
 ****
@@ -55,21 +55,24 @@ VirtualSMC版本：[![Release](https://img.shields.io/github/v/release/acidanthe
 * .DS_Store全称Desktop Services Store，是Mac OS中保存文件夹自定义属性的隐藏文件，目的在于存贮文件夹的自定义属性，例如文件图标位置、视图设置，或背景色等，相当于Windows下的 desktop.ini。由于我的OpenCore是在MacOS下更新的，所以每个文件夹中都会有这个文件，无视即可。
 * OC-A为官方版本，OC-NDK为NDK修改版，两者均可引导双系统，但是官方版本目前有个小bug，上面已经说明。
 * ACPI-Public文件夹中的文件是两个版本都会使用到的acpi补丁，将该文件夹中的所有文件移动到OC/ACPI中
-* Kexts-All文件夹中共有三部分组成，分别为Kexts-Public, Kexts-Intel和Kexts-Boardcom
-  * Kexts-Public为共用驱动，将文件夹中的所有文件复制到OC/Kexts中;
-  * Kexts-Intel为英特尔网卡所需的WI-FI驱动和蓝牙驱动，使用原装网卡（3165）的用户将该文件夹下的文件复制到OC/Kexts中;
-  * Kexts-Boardcom为博通网卡所需的驱动，使用博通网卡的用户将文件夹中的文件复制到OC/Kexts中
-* config配置文件有两个分别为config-Brcm.plist和config-Intel.plist，使用时根据自己的需要将名称改为config.plist其中：
-  * config-Brcm.plist为博通网卡用户使用
-  * config-Intel.plist为英特尔网卡（即原装网卡3165）使用
+* Kexts-All文件夹中的文件是两个版本都会使用到的驱动，将该文件夹中的所有文件移动到OC/Kexts中
+* ComboJack_For_Dell7567_Only文件夹是耳机切换所需文件，按照文件夹的说明操作即可，[截图](#图集)
+* Scripts提供了一些常用的脚本文件
+* Unlock-CFG文件夹提供了解锁CFG所需文件，按该文对应[章节](#解锁cfg建议解锁)操作即可
+* Software提供了一些软件（包括英特尔WIFI客户端）需要注意的是该文件夹下的软件可能不是最新的。
 
 ## 安装说明
 
 #### 该小节仍在完善中
 #### 目前仍在测试，文件会有变动，未来几次的版本更迭建议将上一版的文件全部删除
-* 选择一个你想用的OC版本，将OC-X中的BOOT和OC两个文件夹复制到EFI中，添加引导时添加BOOT中的BOOTx64.efi即可。
-* 按[文件说明](#文件说明)补全ACPI、Kexts；并将config-XX.plist改名为config.plist
-* 使用方向键选择启动项后，按`Ctrl+Enter`键可以选择该项为默认启动项
+
+* 使用Git或者主页的Download ZIP
+
+  * 选择一个你想用的OC版本，将OC-X中的BOOT和OC两个文件夹复制到EFI中，添加引导时添加BOOT中的BOOTx64.efi即可。
+  * 按[文件说明](#文件说明)补全ACPI、Kexts；
+* 下载Release
+  * 选择你要使用的版本，解压之后将BOOT和OC文件夹直接复制到EFI文件夹中即可
+#### 使用方向键选择启动项后，按`Ctrl+Enter`键可以选择该项为默认启动项
 # 安装注意事项（部分节选自Doapeat维护更新的[7567Clover版本](https://github.com/Doapeat/Dell7567)和[黑果小兵的部落阁](https://blog.daliansky.net/OpenCore-BootLoader.html)）
 * BIOS设置:
     * 设置 `SATA Mode`为 `AHCI` ，自行百度；
@@ -77,9 +80,9 @@ VirtualSMC版本：[![Release](https://img.shields.io/github/v/release/acidanthe
     * 关闭 `Secure Boot`；
     * 关闭 `VT ` (最好)；
     * 关闭 SGX；
-* `CPU变频驱动:`  7700HQ和7300HQ都已经定制了`14,1`机型的CPUFriend；需要自行定制的[看这里](https://github.com/stevezhengshiqi/one-key-cpufriend/blob/master/README_CN.md)；
+* `CPU变频驱动:`  7700HQ和7300HQ都已经定制了CPUFriend；需要自行定制的[看这里](https://github.com/stevezhengshiqi/one-key-cpufriend/blob/master/README_CN.md)；
 * 自己（Doapeat）写了一些方便的脚本方便大家使用，在`Scripts`文件夹内，自行选择使用
-### 需要注意，因为目前没有更多数据供参考， 所以我推荐各位在使用Clover安装完成、解锁CFG、并可开机后再切换到OpenCore，保留Clover引导项以备不时之需
+### 需要注意，因为目前没有更多数据供参考，  ~~所以我推荐各位在使用Clover安装完成、解锁CFG、并可开机后再切换到OpenCore，保留Clover引导项以备不时之需~~ 目前可以使用OC直接安装，必须解锁CFG
 
 ## 解决 Clover 和 OpenCore 的冲突
 ### 清理Clover残留
@@ -158,6 +161,7 @@ rm -rf '/Library/Application Support/Clover/CloverWrapper.sh'
 
 # 英特尔wifi使用方法说明
 ### （驱动选用了zxystd的itlwm，详见[远景论坛](http://bbs.pcbeta.com/viewthread-1848662-1-1.html)；[Github](https://github.com/zxystd/itlwm)）
+#### 注意，现在已经可以使用客户端进行连接操作，不过客户端还没有正式发出所以可能会有bug
 * 首先,找到驱动（OC/Kexts/itlwm.kext）右键,显示包内容
 <img src=".\Screenshots\step1.jpg" alt="第一步"  style="zoom:30%;" />
 
@@ -172,6 +176,7 @@ rm -rf '/Library/Application Support/Clover/CloverWrapper.sh'
 提取了几个常用参数对refind.conf文件做一下说明：
 其中的参数稍微有点多，但是我们不必深究，只需要注意我们能用到的那几个参数即可。
 完整的参数请查看官方refind.conf-sample文件
+
 ```
 timeout 60
 // 这个是超时设置，启动后暂停多少秒然后进入系统
@@ -252,8 +257,25 @@ include themes/Regular/theme-2K-dark.conf
 # 更新日志
 * 2020.6.16 更新第一版
 * 2020.6.18 第二版，修改，添加，删除部分ACPI补丁；更新官方OpenCore，可以引导Windows但会有bug，详情简述里有说明；去除ApfsDriverLoader.efi，改为使用OC嵌入式驱动；
+* 2020.7.7 第三版
+  * 1.修改，添加，整合部分ACPI补丁；
+  * 2.添加I2C速度常量SSCN、FMCN；
+  * 3.为了尽可能显示更多的传感器信息，修改机型为mbp14,3；
+  * 4.添加SMCDellSensors以显示，控制双风扇转速（推荐使用Macs Fan Control）；
+  * 5.常规更新部分驱动；
+  * 6.英特尔版本精简WIFI驱动并添加WIFI客户端HeliPort（类原生）并可使用客户端连接\切换WIFI（目前没有正式版所以可能会有bug，本人暂时没有发现明显bug，不过网速只能说是够用）；
+  * 7.在节能中增加“电池健康”选项（只是一个UI，并无实际意义）下版本去掉；
+  * 8.修正原生快捷键，cmd=win徽标键；
+  * 9.为了OC的普适性，取消了英特尔和博通在config文件上的区分，并且为了DW1820a可以顺利安装，默认不勾选WIFi以及蓝牙驱动，安装完成后自行修改勾选即可。
+  * 目前OpenCore官方版本仍在0.5.9，所以该版不支持BigSur，想上自行修改
 
 # 图集
+
+<img src=".\Screenshots\headphone.jpg" alt="耳机切换" />
+
+<img src=".\Screenshots\sensors.jpg" alt="传感器" />
+
+<img src=".\Screenshots\wifi.jpg" alt="英特尔WIFI客户端" />
 
 <img src=".\Screenshots\about.jpg" alt="关于" />
 
