@@ -26,6 +26,10 @@ VirtualSMC版本：[![Release](https://img.shields.io/github/v/release/acidanthe
 ****
 # 目录
 * [简述](#简述)
+  * [目前的bug](#目前的bug)
+  * [目前无法驱动的硬件](#目前无法驱动的硬件)
+  * [文件说明](#文件说明)
+  * [安装说明](#安装说明)
 * [安装注意事项 ***重要***](#安装注意事项部分节选自doapeat维护更新的7567clover版本和黑果小兵的部落阁)
   * [解决Clover和OpenCore的冲突 ](#解决-clover-和-opencore-的冲突)
   * [重置NVRAM](#重置硬件nvram)
@@ -41,15 +45,31 @@ VirtualSMC版本：[![Release](https://img.shields.io/github/v/release/acidanthe
 ****
 
 # 简述
-* 这是一个适用于Dell7567机型的OpenCore版本驱动，因为没有数据供参考所以仍处于测试阶段，在本人笔记本上测试是没有问题的。
-* 官方OpenCore ~~需搭配rEFInd使用~~ 已经可以引导Windows。双系统则可以直接使用NDK版本。
+### [更新日志传送门](#更新日志)
+* 这是一个适用于Dell7567机型的OpenCore版本驱动，仍处于测试阶段，在本人笔记本上测试是没有问题的。
+* 官方OpenCore ~~需搭配rEFInd使用~~ 已经可以引导Windows。
 * ~~我会提供rEFInd引导，想要直接使用，efi中OC的文件名必须为OC且该文件夹中必须有bootx64.efi，Clover文件名必须为Clover，rEFInd中各项配置的作用后面会有说明。~~ 不再提供rEFInd引导，配置说明会保留，可自行配置。
-* 目前的官方OpenCore引导Windows已知问题是：会使QuickSet64中部分（显示Fn锁和数字键盘锁的托盘图标）失效。如果介意请使用NDK版本。
 * 目前为止，包括i2c触控板，亮度快捷键，睡眠唤醒，耳麦，2.1声道都是完美的，使用过程中如果遇到什么问题请在群中交流或提交Issues。
-* 有关风扇的问题，~~因为切换到了VirtualSMC，所以目前没有办法采集到风扇信息，但是不会影响风扇正常运转。目前没有解决方案，一旦有解决方案我会同步更新。~~ 目前双风扇均已显示转速并可控。
 * 该项目使用ComboJack作为耳麦驱动，需要使用ComboJack_For_Dell7567_Only中的文件安装切换弹窗部分，详细安装说明包含在文件中。
+* 目前并不支持Big Sur，想体验需要自行修改
+
+## 目前的bug
+* 暂缺英文版本的readme.md
+* 目前的OC-A引导Windows已知问题是：会使QuickSet64中部分（显示Fn锁和数字键盘锁的托盘图标）失效。且目前并没有解决方案。
+* 有关风扇的问题，~~因为切换到了VirtualSMC，所以目前没有办法采集到风扇信息，但是不会影响风扇正常运转。目前没有解决方案，一旦有解决方案我会同步更新。~~ 目前双风扇均已显示转速并可控。（需要注意的是无法精准控制风扇转速，这是自身的硬件决定的）
+* 有线网卡版本问题会导致部分用户有线网卡无法驱动。（已定位问题，下个版本会修复）。
+* OC-A引导Windows会导致无法调节亮度（已定位问题，下个版本会修复）。
 * 注意，在睡眠唤醒后低音炮可能会无声，调节一下音量即可。
-****
+
+## 目前无法驱动的硬件
+* NVIDIA GTX1050Ti（没有解决方案且以后应该也不会有）
+  * 7567的HDMI接口是直连独显的，这会导致HDMI接口无法使用。
+  * 由于Optimus技术，7567的独显1050Ti即使在10.13及以下MacOS版本也是无法驱动的。
+* Intel Wireless 3165
+    * 目前WIFi部分驱动不完善，速度不理想，客户端功能不完善。
+    * 目前无法使用“接力”，“隔空投送”（大概率以后也不会支持）。
+  ****
+  
 ## 文件说明
 
 * .DS_Store全称Desktop Services Store，是Mac OS中保存文件夹自定义属性的隐藏文件，目的在于存贮文件夹的自定义属性，例如文件图标位置、视图设置，或背景色等，相当于Windows下的 desktop.ini。由于我的OpenCore是在MacOS下更新的，所以每个文件夹中都会有这个文件，无视即可。
@@ -63,7 +83,6 @@ VirtualSMC版本：[![Release](https://img.shields.io/github/v/release/acidanthe
 
 ## 安装说明
 
-#### 该小节仍在完善中
 #### 目前仍在测试，文件会有变动，未来几次的版本更迭建议将上一版的文件全部删除
 
 * 使用Git或者主页的Download ZIP
@@ -255,9 +274,12 @@ include themes/Regular/theme-2K-dark.conf
 |<img src=".\Screenshots\wechat.jpg" alt="微信" />|<img src=".\Screenshots\ali.jpg" alt="支付宝" />|
 
 # 更新日志
-* 2020.6.16 更新第一版
-* 2020.6.18 第二版，修改，添加，删除部分ACPI补丁；更新官方OpenCore，可以引导Windows但会有bug，详情简述里有说明；去除ApfsDriverLoader.efi，改为使用OC嵌入式驱动；
-* 2020.7.7 第三版
+### 2020.6.16 更新第一版
+### 2020.6.18 第二版，
+* 修改，添加，删除部分ACPI补丁；
+* 更新官方OpenCore，可以引导Windows但会有bug，详情简述里有说明；
+* 去除ApfsDriverLoader.efi，改为使用OC嵌入式驱动；
+### 2020.7.7 第三版
   * 1.修改，添加，整合部分ACPI补丁；
   * 2.添加I2C速度常量SSCN、FMCN；
   * 3.为了尽可能显示更多的传感器信息，修改机型为mbp14,3；
