@@ -1,6 +1,7 @@
-<img src="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Logos/OpenCore_with_text_Small.png" width="200" height="48"/>
+<img src="./ScreenShots/OpenCore_with_text_Small.png" width="200" height="48"/>
 
 ## ***使用前请仔细阅读该文本，着重阅读简述及安装注意事项***
+* 仓库已同步至[gitee](https://gitee.com/vicjl/Dell7567-OC)，两个仓库会同步更新，有问题尽量在Github或者Q群提问
 * 目前仍在完善中
 * 交流QQ群：320693336进群验证为机型加OC，例：Dell7567-OC
 ****
@@ -30,7 +31,7 @@ VirtualSMC版本：[![Release](https://img.shields.io/github/v/release/acidanthe
   * [目前无法驱动的硬件](#目前无法驱动的硬件)
   * [文件说明](#文件说明)
   * [安装说明](#安装说明)
-* [安装注意事项 ***重要***](#安装注意事项部分节选自doapeat维护更新的7567clover版本和黑果小兵的部落阁)
+* [ ***安装注意事项*** ](#安装注意事项部分节选自doapeat维护更新的7567clover版本和黑果小兵的部落阁)
   * [解决Clover和OpenCore的冲突 ](#解决-clover-和-opencore-的冲突)
   * [重置NVRAM](#重置硬件nvram)
   * [解锁CFG ](#解锁cfg建议解锁)
@@ -274,11 +275,11 @@ include themes/Regular/theme-2K-dark.conf
 |<img src=".\Screenshots\wechat.jpg" alt="微信" />|<img src=".\Screenshots\ali.jpg" alt="支付宝" />|
 
 # 更新日志
-### 2020.6.16 更新第一版
-### 2020.6.18 第二版，
-* 修改，添加，删除部分ACPI补丁；
-* 更新官方OpenCore，可以引导Windows但会有bug，详情简述里有说明；
-* 去除ApfsDriverLoader.efi，改为使用OC嵌入式驱动；
+
+### 2020.7.13 更新3.1版
+* 修复有线网卡版本问题会导致部分用户有线网卡无法驱动的问题。
+* 修复OC-A引导Windows会导致无法调节亮度的问题。
+
 ### 2020.7.7 第三版
   * 1.修改，添加，整合部分ACPI补丁；
   * 2.添加I2C速度常量SSCN、FMCN；
@@ -290,6 +291,13 @@ include themes/Regular/theme-2K-dark.conf
   * 8.修正原生快捷键，cmd=win徽标键；
   * 9.为了OC的普适性，取消了英特尔和博通在config文件上的区分，并且为了DW1820a可以顺利安装，默认不勾选WIFi以及蓝牙驱动，安装完成后自行修改勾选即可。
   * 目前OpenCore官方版本仍在0.5.9，所以该版不支持BigSur，想上自行修改
+
+### 2020.6.18 第二版
+* 修改，添加，删除部分ACPI补丁；
+* 更新官方OpenCore，可以引导Windows但会有bug，详情简述里有说明；
+* 去除ApfsDriverLoader.efi，改为使用OC嵌入式驱动
+
+### 2020.6.16 更新第一版
 
 # 图集
 
