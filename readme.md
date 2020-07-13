@@ -1,4 +1,4 @@
-<img src="./ScreenShots/OpenCore_with_text_Small.png" width="200" height="48"/>
+<img src="./Screenshots/OpenCore_with_text_Small.png" width="200" height="48"/>
 
 ## ***使用前请仔细阅读该文本，着重阅读简述及安装注意事项***
 * 仓库已同步至[gitee](https://gitee.com/vicjl/Dell7567-OC)，两个仓库会同步更新，有问题尽量在Github或者Q群提问
