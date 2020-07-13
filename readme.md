@@ -1,7 +1,7 @@
 <img src="./Screenshots/OpenCore_with_text_Small.png" width="200" height="48"/>
 
 ## ***使用前请仔细阅读该文本，着重阅读简述及安装注意事项***
-* 仓库已同步至[gitee](https://gitee.com/vicjl/Dell7567-OC)，两个仓库会同步更新，有问题尽量在Github或者Q群提问
+* [Github](https://github.com/vicjl/Dell7567-OC)仓库已同步至[Gitee](https://gitee.com/vicjl/Dell7567-OC)，两个仓库会同步更新，有问题尽量在Github或者Q群提问
 * 目前仍在完善中
 * 交流QQ群：320693336进群验证为机型加OC，例：Dell7567-OC
 ****
@@ -153,7 +153,7 @@ rm -rf '/Library/Application Support/Clover/CloverWrapper.sh'
 ### 机型不是Dell 7567，请不要看下面的方法；
 ### 升级BIOS不一定会重新锁定CFG，自行校验！
 
-<img src=".\Screenshots\cfg1.png" alt="可以看到地址为0x4DE"  />
+<img src="./Screenshots/cfg1.png" alt="可以看到地址为0x4DE"  />
 
 1.从上图中可以看到CFG lock的地址是`0x4DE`，默认是`开启`状态；
 
@@ -163,7 +163,7 @@ rm -rf '/Library/Application Support/Clover/CloverWrapper.sh'
 
 4.如果是`0x01`，那么输入 `setup_var 0x4DE 0x00`，输入`reboot`重启系统，使用Hackintool可以看到下面的样子：
 
-<img src=".\Screenshots\cfg2.png" alt="检查解锁"  />
+<img src="./Screenshots/cfg2.png" alt="检查解锁"  />
 
 
 至此解锁完成！顺便把`启用HWP`勾上！
@@ -183,14 +183,14 @@ rm -rf '/Library/Application Support/Clover/CloverWrapper.sh'
 ### （驱动选用了zxystd的itlwm，详见[远景论坛](http://bbs.pcbeta.com/viewthread-1848662-1-1.html)；[Github](https://github.com/zxystd/itlwm)）
 #### 注意，现在已经可以使用客户端进行连接操作，不过客户端还没有正式发出所以可能会有bug
 * 首先,找到驱动（OC/Kexts/itlwm.kext）右键,显示包内容
-<img src=".\Screenshots\step1.jpg" alt="第一步"  style="zoom:30%;" />
+<img src="./Screenshots/step1.jpg" alt="第一步"  style="zoom:30%;" />
 
 * 找到info.plist,打开编辑
-<img src=".\Screenshots\step2.jpg" alt="第二步" style="zoom:30%;"  />
+<img src="./Screenshots/step2.jpg" alt="第二步" style="zoom:30%;"  />
 
 * 第三步,我这里是用xcode编辑,方便查看,用PlistEdit Pro也是可以的
 * 将密码跟ssid换成你的Wi-Fi后保存重启即可
-<img src=".\Screenshots\step3.jpg" alt="第三步" style="zoom:30%;"  />
+<img src="./Screenshots/step3.jpg" alt="第三步" style="zoom:30%;"  />
 
 # rEFInd配置说明（节选自[远景论坛](http://bbs.pcbeta.com/viewthread-1835917-1-1.html)）
 提取了几个常用参数对refind.conf文件做一下说明：
@@ -272,7 +272,7 @@ include themes/Regular/theme-2K-dark.conf
 
 |微信:wink: |支付宝:wink:|
 | :-: | :-: |
-|<img src=".\Screenshots\wechat.jpg" alt="微信" />|<img src=".\Screenshots\ali.jpg" alt="支付宝" />|
+|<img src="./Screenshots/wechat.jpg" alt="微信" />|<img src="./Screenshots/ali.jpg" alt="支付宝" />|
 
 # 更新日志
 
@@ -286,7 +286,7 @@ include themes/Regular/theme-2K-dark.conf
   * 3.为了尽可能显示更多的传感器信息，修改机型为mbp14,3；
   * 4.添加SMCDellSensors以显示，控制双风扇转速（推荐使用Macs Fan Control）；
   * 5.常规更新部分驱动；
-  * 6.英特尔版本精简WIFI驱动并添加WIFI客户端HeliPort（类原生）并可使用客户端连接\切换WIFI（目前没有正式版所以可能会有bug，本人暂时没有发现明显bug，不过网速只能说是够用）；
+  * 6.英特尔版本精简WIFI驱动并添加WIFI客户端HeliPort（类原生）并可使用客户端连接/切换WIFI（目前没有正式版所以可能会有bug，本人暂时没有发现明显bug，不过网速只能说是够用）；
   * 7.在节能中增加“电池健康”选项（只是一个UI，并无实际意义）下版本去掉；
   * 8.修正原生快捷键，cmd=win徽标键；
   * 9.为了OC的普适性，取消了英特尔和博通在config文件上的区分，并且为了DW1820a可以顺利安装，默认不勾选WIFi以及蓝牙驱动，安装完成后自行修改勾选即可。
@@ -301,25 +301,25 @@ include themes/Regular/theme-2K-dark.conf
 
 # 图集
 
-<img src=".\Screenshots\headphone.jpg" alt="耳机切换" />
+<img src="./Screenshots/headphone.jpg" alt="耳机切换" />
 
-<img src=".\Screenshots\sensors.jpg" alt="传感器" />
+<img src="./Screenshots/sensors.jpg" alt="传感器" />
 
-<img src=".\Screenshots\wifi.jpg" alt="英特尔WIFI客户端" />
+<img src="./Screenshots/wifi.jpg" alt="英特尔WIFI客户端" />
 
-<img src=".\Screenshots\about.jpg" alt="关于" />
+<img src="./Screenshots/about.jpg" alt="关于" />
 
-<img src=".\Screenshots\touchpad.jpg" alt="触控板多指"  />
+<img src="./Screenshots/touchpad.jpg" alt="触控板多指"  />
 
-<img src=".\Screenshots\gpio.jpg" alt="触控板GPIO中断" />
+<img src="./Screenshots/gpio.jpg" alt="触控板GPIO中断" />
 
-<img src=".\Screenshots\frequency.jpg" alt="变频" />
+<img src="./Screenshots/frequency.jpg" alt="变频" />
 
-<img src=".\Screenshots\brightness.jpg" alt="亮度快捷键" />
+<img src="./Screenshots/brightness.jpg" alt="亮度快捷键" />
 
-<img src=".\Screenshots\3165.jpg" alt="原生无线网卡wifi" />
+<img src="./Screenshots/3165.jpg" alt="原生无线网卡wifi" />
 
-<img src=".\Screenshots\crw.jpg" alt="SD读卡器" />
+<img src="./Screenshots/crw.jpg" alt="SD读卡器" />
 
 # Credits
 * Acidanthera团队的Opencore
