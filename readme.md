@@ -46,13 +46,14 @@ VirtualSMC版本：[![Release](https://img.shields.io/github/v/release/acidanthe
 ****
 
 # 简述
-### [更新日志传送门](#更新日志)
-* 这是一个适用于Dell7567机型的OpenCore版本驱动，仍处于测试阶段，在本人笔记本上测试是没有问题的。
+### [更新日志传送门](#更新日志) 2020.8.15更新
+* 这是一个适用于Dell7567机型的OpenCore版本驱动。
 * 官方OpenCore ~~需搭配rEFInd使用~~ 已经可以引导Windows。
 * ~~我会提供rEFInd引导，想要直接使用，efi中OC的文件名必须为OC且该文件夹中必须有bootx64.efi，Clover文件名必须为Clover，rEFInd中各项配置的作用后面会有说明。~~ 不再提供rEFInd引导，配置说明会保留，可自行配置。
 * 目前为止，包括i2c触控板，亮度快捷键，睡眠唤醒，耳麦，2.1声道都是完美的，使用过程中如果遇到什么问题请在群中交流或提交Issues。
 * 该项目使用ComboJack作为耳麦驱动，需要使用ComboJack_For_Dell7567_Only中的文件安装切换弹窗部分，详细安装说明包含在文件中。
-* 目前并不支持Big Sur，想体验需要自行修改
+*  ~~目前并不支持Big Sur，想体验需要自行修改~~ 已经支持Big Sur，详见更新日志。
+#### [回到目录](#目录)
 
 ## 目前的bug
 * 暂缺英文版本的readme.md
@@ -61,6 +62,7 @@ VirtualSMC版本：[![Release](https://img.shields.io/github/v/release/acidanthe
 * ~~有线网卡版本问题会导致部分用户有线网卡无法驱动。（已定位问题，下个版本会修复）~~ 已解决。
 * ~~OC-A引导Windows会导致无法调节亮度（已定位问题，下个版本会修复）~~ 已解决。
 * 注意，在睡眠唤醒后低音炮可能会无声，调节一下音量即可。
+#### [回到目录](#目录)
 
 ## 目前无法驱动的硬件
 * NVIDIA GTX1050Ti（没有解决方案且以后应该也不会有）
@@ -69,7 +71,7 @@ VirtualSMC版本：[![Release](https://img.shields.io/github/v/release/acidanthe
 * Intel Wireless 3165
     * 目前WIFi部分驱动不完善，速度不理想，客户端功能不完善。
     * 目前无法使用“接力”，“隔空投送”（大概率以后也不会支持）。
-  
+    
   ****
   
 ## 文件说明
@@ -94,6 +96,7 @@ VirtualSMC版本：[![Release](https://img.shields.io/github/v/release/acidanthe
 * 下载Release
   * 选择你要使用的版本，解压之后将BOOT和OC文件夹直接复制到EFI文件夹中即可
 #### 使用方向键选择启动项后，按`Ctrl+Enter`键可以选择该项为默认启动项
+#### [回到目录](#目录)
 # 安装注意事项（部分节选自Doapeat维护更新的[7567Clover版本](https://github.com/Doapeat/Dell7567)和[黑果小兵的部落阁](https://blog.daliansky.net/OpenCore-BootLoader.html)）
 * BIOS设置:
     * 设置 `SATA Mode`为 `AHCI` ，自行百度；
@@ -146,13 +149,13 @@ rm -rf '/Library/Application Support/Clover/CloverWrapper.sh'
 * 可以通过OC清除
   * 进入OC界面按空格显示隐藏项选择Reset NVRAM
   * 该操作可能会使启动项清空，自行再次添加即可
+#### [回到目录](#目录)
 
 ## 解锁CFG（建议解锁）
 #### 需要注意，这个可能会有损坏硬件的风险（只要正常操作几乎不会）如果因此出现硬件损坏问题本人概不负责
-#### 需要注意，该版本适用于已解锁CFG的7567上使用，未解锁CFG的用户使用该OC版本 ~~可能~~ 一定会出问题。
+#### 该版本适用于已解锁CFG的7567上使用，未解锁CFG的用户使用该OC版本 ~~可能~~ 一定会出问题。
 * 在此处提供一个简单的方法
-### 机型不是Dell 7567，请不要看下面的方法；
-### 升级BIOS不一定会重新锁定CFG，自行校验！
+### 机型不是Dell 7567，请不要看下面的方法
 
 <img src="./Screenshots/cfg1.png" alt="可以看到地址为0x4DE"  />
 
@@ -169,6 +172,7 @@ rm -rf '/Library/Application Support/Clover/CloverWrapper.sh'
 
 至此解锁完成！顺便把`启用HWP`勾上！
 ### 通用方法详见Doapeat的[README.md](https://github.com/Doapeat/Dell7567)
+#### [回到目录](#目录)
 
 ## OC中的原生开机快捷键组合
 
@@ -179,6 +183,7 @@ rm -rf '/Library/Application Support/Clover/CloverWrapper.sh'
 * `Option / ALT`: 在 ShowPicker 设置成 NO 时显示引导项选择界面, ALT 不可用时可用 ESC 键代替
 * `Cmd + C + 减号`: 关闭主板兼容性检查, 等同于添加引导标识符 -no_compat_check
 * `Shift`: 安全模式
+#### [回到目录](#目录)
 
 # 英特尔wifi使用方法说明
 ### （驱动选用了zxystd的itlwm，详见[远景论坛](http://bbs.pcbeta.com/viewthread-1848662-1-1.html)；[Github](https://github.com/zxystd/itlwm)）
@@ -192,6 +197,8 @@ rm -rf '/Library/Application Support/Clover/CloverWrapper.sh'
 * 第三步,我这里是用xcode编辑,方便查看,用PlistEdit Pro也是可以的
 * 将密码跟ssid换成你的Wi-Fi后保存重启即可
 <img src="./Screenshots/step3.jpg" alt="第三步" style="zoom:30%;"  />
+
+#### [回到目录](#目录)
 
 # rEFInd配置说明（节选自[远景论坛](http://bbs.pcbeta.com/viewthread-1835917-1-1.html)）
 提取了几个常用参数对refind.conf文件做一下说明：
@@ -269,6 +276,8 @@ disabled
 include themes/Regular/theme-2K-dark.conf
 // 引入主题的配置文件
 ```
+#### [回到目录](#目录)
+
 # 你的`打赏` 是我更新的最大动力:satisfied:
 
 |微信:wink: |支付宝:wink:|
@@ -276,6 +285,19 @@ include themes/Regular/theme-2K-dark.conf
 |<img src="./Screenshots/wechat.jpg" alt="微信" />|<img src="./Screenshots/ali.jpg" alt="支付宝" />|
 
 # 更新日志
+#### [回到目录](#目录)
+### 2020.8.15 更新第四版
+* 常规驱动更新
+  * 需要注意，AirportBrcmFixup的PlugIns中含有两个驱动，已在Config中注明，并添加了最小最大内核限制，博通网卡用户可以把涉及WIFI的三个驱动全部选上，OC会根据你使用的系统版本选择对应驱动。
+  * DW1820a网卡用户需要注意，在11.0 Big Sur 里，需要DeviceProperties中添加WIFI设备，并在常规添加的基础上添加名为compatible的键，字符类型，值为pci14e4,43a0。（由Q群群友`虐情`提供）
+  * 添加驱动SystemProfilerMemoryFixup用来在“关于本机”中显示内存项，但是在11.0中暂不可用，原因同下。
+  *  由于11.0禁用了CoreDisplay的用户空间修补， 所以4K屏暂时只能通过EDID将输出改为4K 48Hz以正常显示，暂时不建议4K屏用户更新11.0。原文`The user patcher used for Coredisplay was disabledin Lilu on Big Sur. So other kexts / functions relying on it such asSystemProfilerMemoryFixup should have broken as well. Just waitfor a fully functional Lilu first.`截取自`zhen-zen`在`Acidanthera`的`#1024Issue`中。
+* 常规软件更新
+* 尝试支持MacOS11.0 Big Sur，目前可进行11.0的全新安装
+  * 11.0仍处于beta阶段，所以在11.0中遇到的任何问题都需要自行解决。目前只支持到当前的最新测试版（Beta4和Public Beta 1）。
+* 添加、修改部分ACPI补丁
+* 其他改进
+* 由于OC-NDK版未更新，所以此次更新不包括OC-NDK版
 
 ### 2020.7.13 更新3.1版
 * 修复有线网卡版本问题会导致部分用户有线网卡无法驱动的问题。
@@ -331,9 +353,9 @@ include themes/Regular/theme-2K-dark.conf
 
 * 宪武制作的OC-Little补丁
 
-* Daliansky的部分OpenCore详解
+* Daliansky的OpenCore详解
 
-* XJN的部分OpenCore详解
+* XJN的OpenCore详解
 
 * SukkaW的`从Clover到OpenCore`
 
