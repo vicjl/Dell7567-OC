@@ -1,17 +1,11 @@
-<img src="./Screenshots/OpenCore_with_text_Small.png" width="200" height="48"/>
+<img src="https://gitee.com/vicjl/pic/raw/master/img/OpenCore_with_text_Small.png" width="200" height="48"/>
 
 ## ***使用前请仔细阅读该文本，着重阅读简述及安装注意事项***
 * [Github](https://github.com/vicjl/Dell7567-OC)仓库已同步至[Gitee](https://gitee.com/vicjl/Dell7567-OC)，两个仓库会同步更新，有问题尽量在Github或者Q群提问
-* 目前仍在完善中
-* 交流QQ群：320693336进群验证为机型加OC，例：Dell7567-OC
-****
+* 交流QQ群：320693336  进群验证为机型加OC，例：Dell7567-OC
 * Dell7567-OC Release版本：[![Release](https://img.shields.io/github/v/release/vicjl/Dell7567-OC?color=green&include_prereleases&label=Release)](https://github.com/vicjl/Dell7567-OC/releases)
-* OpenCore版本：[![Release](https://img.shields.io/github/v/release/acidanthera/OpenCorePkg?color=green&include_prereleases&label=Release)](https://github.com/acidanthera/OpenCorePkg/releases)
-OpenCore每日自动构建版本：[![Release](https://img.shields.io/github/v/release/williambj1/OpenCore-Factory?color=orange&include_prereleases&label=Release)](https://github.com/williambj1/OpenCore-Factory/releases)
-* OpenCore NDK版本：[![Release](https://img.shields.io/github/v/release/n-d-k/OpenCorePkg?color=green&include_prereleases&label=Release)](https://github.com/n-d-k/OpenCorePkg/releases)
-* Clover版本：[![Release](https://img.shields.io/github/v/release/CloverHackyColor/CloverBootloader?color=green&include_prereleases&label=Release)](https://github.com/CloverHackyColor/CloverBootloader/releases)
-* Lilu版本：[![Release](https://img.shields.io/github/v/release/acidanthera/Lilu?color=blue&include_prereleases&label=Release)](https://github.com/acidanthera/Lilu/releases)
-VirtualSMC版本：[![Release](https://img.shields.io/github/v/release/acidanthera/VirtualSMC?color=blue&include_prereleases&label=Release)](https://github.com/acidanthera/VirtualSMC/releases)
+* 逐步精简readme.md，重心回归至OC新用户及更新日志，其余内容会转移至我的个人博客，敬请期待
+* 图片已转移至图床，以解决部分用户网络无法加载图片问题
 ****
 # 配置详情
 | 配置 / Hardware | 详情 / Detail|
@@ -37,7 +31,6 @@ VirtualSMC版本：[![Release](https://img.shields.io/github/v/release/acidanthe
   * [解锁CFG ](#解锁cfg建议解锁)
   * [OC中的原生开机快捷键组合](#OC中的原生开机快捷键组合)
 * [英特尔wifi使用方法说明](#英特尔wifi使用方法说明)
-* [rEFInd配置说明](#refind配置说明节选自远景论坛)
 * [打赏](#你的打赏-是我更新的最大动力satisfied)
 * [更新日志](#更新日志)
 * [图集](#图集)
@@ -49,18 +42,14 @@ VirtualSMC版本：[![Release](https://img.shields.io/github/v/release/acidanthe
 ### [更新日志传送门](#更新日志) 2020.8.15更新
 * 这是一个适用于Dell7567机型的OpenCore版本驱动。
 * 官方OpenCore ~~需搭配rEFInd使用~~ 已经可以引导Windows。
-* ~~我会提供rEFInd引导，想要直接使用，efi中OC的文件名必须为OC且该文件夹中必须有bootx64.efi，Clover文件名必须为Clover，rEFInd中各项配置的作用后面会有说明。~~ 不再提供rEFInd引导，配置说明会保留，可自行配置。
-* 目前为止，包括i2c触控板，亮度快捷键，睡眠唤醒，耳麦，2.1声道都是完美的，使用过程中如果遇到什么问题请在群中交流或提交Issues。
+* 目前为止，包括i2c触控板，亮度快捷键，睡眠唤醒，耳麦，2.1声道都是完美的，使用过程中如果遇到什么问题请在群中交流、提交Issues或者到我的博客留言。
 * 该项目使用ComboJack作为耳麦驱动，需要使用ComboJack_For_Dell7567_Only中的文件安装切换弹窗部分，详细安装说明包含在文件中。
 *  ~~目前并不支持Big Sur，想体验需要自行修改~~ 已经支持Big Sur，详见更新日志。
 #### [回到目录](#目录)
 
 ## 目前的bug
-* 暂缺英文版本的readme.md
 * 目前的OC-A引导Windows已知问题是：会使QuickSet64中部分（显示Fn锁和数字键盘锁的托盘图标）失效。且目前并没有解决方案。
 * 有关风扇的问题，~~因为切换到了VirtualSMC，所以目前没有办法采集到风扇信息，但是不会影响风扇正常运转。目前没有解决方案，一旦有解决方案我会同步更新。~~ 目前双风扇均已显示转速并可控。（需要注意的是无法精准控制风扇转速，这是自身的硬件决定的）
-* ~~有线网卡版本问题会导致部分用户有线网卡无法驱动。（已定位问题，下个版本会修复）~~ 已解决。
-* ~~OC-A引导Windows会导致无法调节亮度（已定位问题，下个版本会修复）~~ 已解决。
 * 注意，在睡眠唤醒后低音炮可能会无声，调节一下音量即可。
 #### [回到目录](#目录)
 
@@ -70,7 +59,7 @@ VirtualSMC版本：[![Release](https://img.shields.io/github/v/release/acidanthe
   * 由于Optimus技术，7567的独显1050Ti即使在10.13及以下MacOS版本也是无法驱动的。
 * Intel Wireless 3165
     * 目前WIFi部分驱动不完善，速度不理想，客户端功能不完善。
-    * 目前无法使用“接力”，“隔空投送”（大概率以后也不会支持）。
+    * 目前无法使用 ~~“接力”，~~ “隔空投送”（ ~~大概率以后~~ 暂时不支持）。
     
   ****
   
@@ -83,11 +72,10 @@ VirtualSMC版本：[![Release](https://img.shields.io/github/v/release/acidanthe
 * ComboJack_For_Dell7567_Only文件夹是耳机切换所需文件，按照文件夹的说明操作即可，[截图](#图集)
 * Scripts提供了一些常用的脚本文件
 * Unlock-CFG文件夹提供了解锁CFG所需文件，按该文对应[章节](#解锁cfg建议解锁)操作即可
-* Software提供了一些软件（包括英特尔WIFI客户端）需要注意的是该文件夹下的软件可能不是最新的。
 
 ## 安装说明
 
-#### 目前仍在测试，文件会有变动，未来几次的版本更迭建议将上一版的文件全部删除
+####  ~~目前仍在测试，文件会有变动，~~ 未来几次的版本更迭建议将上一版的文件全部删除
 
 * 使用Git或者主页的Download ZIP
 
@@ -154,10 +142,9 @@ rm -rf '/Library/Application Support/Clover/CloverWrapper.sh'
 ## 解锁CFG（建议解锁）
 #### 需要注意，这个可能会有损坏硬件的风险（只要正常操作几乎不会）如果因此出现硬件损坏问题本人概不负责
 #### 该版本适用于已解锁CFG的7567上使用，未解锁CFG的用户使用该OC版本 ~~可能~~ 一定会出问题。
-* 在此处提供一个简单的方法
-### 机型不是Dell 7567，请不要看下面的方法
+* 此处只提供一个简单的方法，只适用于Dell 7567
 
-<img src="./Screenshots/cfg1.png" alt="可以看到地址为0x4DE"  />
+<img src="https://gitee.com/vicjl/pic/raw/master/img/cfg1.png" alt="可以看到地址为0x4DE"  />
 
 1.从上图中可以看到CFG lock的地址是`0x4DE`，默认是`开启`状态；
 
@@ -167,7 +154,7 @@ rm -rf '/Library/Application Support/Clover/CloverWrapper.sh'
 
 4.如果是`0x01`，那么输入 `setup_var 0x4DE 0x00`，输入`reboot`重启系统，使用Hackintool可以看到下面的样子：
 
-<img src="./Screenshots/cfg2.png" alt="检查解锁"  />
+<img src="https://gitee.com/vicjl/pic/raw/master/img/cfg2.png" alt="检查解锁"  />
 
 
 至此解锁完成！顺便把`启用HWP`勾上！
@@ -189,100 +176,23 @@ rm -rf '/Library/Application Support/Clover/CloverWrapper.sh'
 ### （驱动选用了zxystd的itlwm，详见[远景论坛](http://bbs.pcbeta.com/viewthread-1848662-1-1.html)；[Github](https://github.com/zxystd/itlwm)）
 #### 注意，现在已经可以使用客户端进行连接操作，不过客户端还没有正式发出所以可能会有bug
 * 首先,找到驱动（OC/Kexts/itlwm.kext）右键,显示包内容
-<img src="./Screenshots/step1.jpg" alt="第一步"  style="zoom:30%;" />
+<img src="https://gitee.com/vicjl/pic/raw/master/img/step1.jpg" alt="第一步"  style="zoom:30%;" />
 
 * 找到info.plist,打开编辑
-<img src="./Screenshots/step2.jpg" alt="第二步" style="zoom:30%;"  />
+<img src="https://gitee.com/vicjl/pic/raw/master/img/step2.jpg" alt="第二步" style="zoom:30%;"  />
 
 * 第三步,我这里是用xcode编辑,方便查看,用PlistEdit Pro也是可以的
 * 将密码跟ssid换成你的Wi-Fi后保存重启即可
-<img src="./Screenshots/step3.jpg" alt="第三步" style="zoom:30%;"  />
+<img src="https://gitee.com/vicjl/pic/raw/master/img/step3.jpg" alt="第三步" style="zoom:30%;"  />
 
 #### [回到目录](#目录)
 
-# rEFInd配置说明（节选自[远景论坛](http://bbs.pcbeta.com/viewthread-1835917-1-1.html)）
-提取了几个常用参数对refind.conf文件做一下说明：
-其中的参数稍微有点多，但是我们不必深究，只需要注意我们能用到的那几个参数即可。
-完整的参数请查看官方refind.conf-sample文件
-
-```
-timeout 60
-// 这个是超时设置，启动后暂停多少秒然后进入系统
-        ​shutdown_after_timeout false
-// 顾名思义，在超时之后关机，设置true/false
-​
-use_nvram false
-// 是否使用nvram保存你的refind设置，个人建议使用本地文件来保存NVRAM变量，官方也说了长期使用NVRAM保存会对其有损耗
-​
-hideui singleuser,arrows,hints,label
-// 隐藏引导界面的一些选项依，常用参数有以下选项
-// singleuser：针对macOS的单用户模式
-// arrows：这个是当你引导香过多时，隐藏你的左右两侧箭头的图标（前提是你主题中制作了该图标）
-// hints：隐藏引导界面底部对refind的简要说明和帮助
-// label：隐藏引导项的菜单文字
-// badges：隐藏设备类型的标签，比如你插入含引导项的U盘的话，该引导项右下角就会有一个USB标识
-// all：全部隐藏
-​
-small_icon_size 96
-// 这是比如关机、重启这类图标的尺寸
-​
-big_icon_size 256
-// 这就是引导项的图标尺寸）
-/* 关于图标尺寸，我建议设置为你制作好的主题图标原尺寸为宜，这样可以避免缩放失真，从而影响美观 */
-​
-resolution 2560 1440
-// 分辨率设置，可以接受两个参数(X * Y)或者一个参数(X)
-/* 这里详细说一下，默认不设置的话值为"0 0"，官方说此时会使用你系统分辨率默认值，通常是800x600。
-当你使用1个参数来设置的时候，比如"0、1、2~10"等等，通过我的测试发现它的值是一个模式值数值表示(mode0,mode1~mode10),
-有可能你的显示器并不支持你设置的分辨率(如"3840 2160")，然后启动后它就会显示你当前支持的所有模式，每个模式对应一个分辨率，然后你自己选择最适合你显示器分辨率填入即可 */
-​
-use_graphics_for osx,windows,linux
-// 是否以图形化方式启动指定系统，默认refind会像OpenCore那样使用文字模式来启动系统，建议这里像我这样设置都使用图形化方式启动
-​
-showtools shutdown,reboot
-// 显示哪些工具在你的引导项的下面，我只设置显示关机和重启，你需要更多项的话，参照官方Sample.conf文件完整说明
-​
-#dont_scan_tools ESP2:/EFI/ubuntu/mmx64.efi,gptsync_x64.efi
-#scan_driver_dirs EFI/tools/drivers,drivers
-#scanfor internal,external,optical,manual
-#also_scan_dirs boot,ESP2:EFI/linux/kernels
-#dont_scan_dirs ESP:/EFI/boot,EFI/Dell,EFI/memtest86
-#dont_scan_dirs +ESP:/EFI/ubuntu
-#dont_scan_files shim.efi,MokManager.efi
-// 这几个一般不需要使用，除非你分区、启动项或efi驱动过多时可能需要
-​
-dont_scan_volumes "Macintosh HD","Recovery","Preboot"
-// 使用分区卷名称来设置不扫描哪些卷，跟Clover的隐藏引导卷类似
-​
-dont_scan_dirs EFI_ESP:/EFI/APPLE,/EFI/CLOVER,/EFI/Microsoft/Boot,/EFI/OC
-// 这个是设置不让refind扫面哪些目录，一般情况下我们只要自定义好了引导项，建议其它有.efi文件的目录都给添加上
-​
-scan_all_linux_kernels false
-// 如果你没有Linux类系统的话，请设置为false，这样可以加快启动速度
-​
-/* 下面的是自定义启动项，这才是我们需要设置的 */
-menuentry "OpenCore" {  // 引导项名称
-icon /EFI/BOOT/themes/Regular/icons/2K/os_opencore.png  // 图标路径
-loader /EFI/BOOT/BOOTx64-OC.efi  // efi启动文件路径
-enable  // 此处设置启用/不启用(enable/disabled)此引导项
-}
-​
-menuentry "Clover" {
-icon /EFI/BOOT/themes/Regular/icons/2K/os_clover.png
-loader /EFI/CLOVER/CLOVERX64.efi
-disabled
-}
-​
-include themes/Regular/theme-2K-dark.conf
-// 引入主题的配置文件
-```
-#### [回到目录](#目录)
 
 # 你的`打赏` 是我更新的最大动力:satisfied:
 
 |微信:wink: |支付宝:wink:|
 | :-: | :-: |
-|<img src="./Screenshots/wechat.jpg" alt="微信" />|<img src="./Screenshots/ali.jpg" alt="支付宝" />|
+|<img src="https://gitee.com/vicjl/pic/raw/master/img/wechat.jpg" alt="微信" />|<img src="https://gitee.com/vicjl/pic/raw/master/img/ali.jpg" alt="支付宝" />|
 
 # 更新日志
 #### [回到目录](#目录)
@@ -324,25 +234,25 @@ include themes/Regular/theme-2K-dark.conf
 
 # 图集
 
-<img src="./Screenshots/headphone.jpg" alt="耳机切换" />
+<img src="https://gitee.com/vicjl/pic/raw/master/img/headphone.jpg" alt="耳机切换" />
 
-<img src="./Screenshots/sensors.jpg" alt="传感器" />
+<img src="https://gitee.com/vicjl/pic/raw/master/img/sensors.jpg" alt="传感器" />
 
-<img src="./Screenshots/wifi.jpg" alt="英特尔WIFI客户端" />
+<img src="https://gitee.com/vicjl/pic/raw/master/img/wifi.jpg" alt="英特尔WIFI客户端" />
 
-<img src="./Screenshots/about.jpg" alt="关于" />
+<img src="https://gitee.com/vicjl/pic/raw/master/img/about.jpg" alt="关于" />
 
-<img src="./Screenshots/touchpad.jpg" alt="触控板多指"  />
+<img src="https://gitee.com/vicjl/pic/raw/master/img/touchpad.jpg" alt="触控板多指"  />
 
-<img src="./Screenshots/gpio.jpg" alt="触控板GPIO中断" />
+<img src="https://gitee.com/vicjl/pic/raw/master/img/gpio.jpg" alt="触控板GPIO中断" />
 
-<img src="./Screenshots/frequency.jpg" alt="变频" />
+<img src="https://gitee.com/vicjl/pic/raw/master/img/frequency.jpg" alt="变频" />
 
-<img src="./Screenshots/brightness.jpg" alt="亮度快捷键" />
+<img src="https://gitee.com/vicjl/pic/raw/master/img/brightness.jpg" alt="亮度快捷键" />
 
-<img src="./Screenshots/3165.jpg" alt="原生无线网卡wifi" />
+<img src="https://gitee.com/vicjl/pic/raw/master/img/3165.jpg" alt="原生无线网卡wifi" />
 
-<img src="./Screenshots/crw.jpg" alt="SD读卡器" />
+<img src="https://gitee.com/vicjl/pic/raw/master/img/crw.jpg" alt="SD读卡器" />
 
 # Credits
 * Acidanthera团队的Opencore
