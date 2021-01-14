@@ -1,15 +1,13 @@
 <img src="https://gitee.com/vicjl/pic/raw/master/img/OpenCore_with_text_Small.png" width="200" height="48"/>
 
 ## ***这是一个适用于Dell7567机型的OpenCore版本驱动。***
-* [Github](https://github.com/vicjl/Dell7567-OC)仓库已同步至[Gitee](https://gitee.com/vicjl/Dell7567-OC)，两个仓库会同步更新，有问题尽量在Github或者Q群提问
+* [Github](https://github.com/vicjl/Dell7567-OC)仓库已同步至[Gitee](https://gitee.com/vicjl/Dell7567-OC)，两个仓库会同步更新，如果出现Github图片加载不全或release下载失败等情况请通过Gitee访问。有问题尽量在Github或者Q群提问
 * 交流QQ群：320693336  进群验证为机型加OC，例：Dell7567-OC
-* Dell7567-OC Release版本：[![Release](https://img.shields.io/github/v/release/vicjl/Dell7567-OC?color=green&include_prereleases&label=Release)](https://github.com/vicjl/Dell7567-OC/releases) 11.15已更新
-* 目前为止，包括i2c触控板，亮度快捷键，睡眠唤醒，耳麦，2.1声道都是完美的，使用过程中如果遇到什么问题请在群中交流、提交Issues或者到我的博客留言。
+* Dell7567-OC Release版本：[![Release](https://img.shields.io/github/v/release/vicjl/Dell7567-OC?color=green&include_prereleases&label=Release)](https://github.com/vicjl/Dell7567-OC/releases)  ***（新手请点击该图标下载OC-A若无法打开，请尝试点击右侧的 `Releases` 或 `发行版` 下载最新版本 ，不要点上面的下载）*** 
+* 目前为止，包括i2c触控板，亮度快捷键，睡眠唤醒，耳麦，2.1声道都是完美的，使用过程中如果遇到什么问题请及时交流沟通。
 * 该项目使用ComboJack作为耳麦驱动，需要使用ComboJack_For_Dell7567_Only中的文件安装切换弹窗部分，详细安装说明包含在文件中
-*  已经支持Big Sur，详见更新日志
-* 后续更新已不包含OC-NDK版
-* 逐步精简readme.md，重心回归至OC新用户及更新日志，readme.md中的其余内容会转移至我的个人博客，敬请期待
-* 使用本OC必须解锁CFG，菜单中已经包含一键解锁选项，所以原有的解锁教程移除
+*  已经支持Big Sur且后续更新不包含OC-NDK版
+* 使用本OC必须解锁CFG，菜单中已经包含一键解锁选项
 * 如果你是纯新手，点 [纯新手教程](./readme-for-new-user.md)
 ****
 # 配置详情
@@ -37,8 +35,8 @@
 ****
 
 ## 目前的bug
-* 目前的OC-A引导Windows已知问题是：会使QuickSet64中部分（显示Fn锁和数字键盘锁的托盘图标）失效。且目前并没有解决方案。
-* 有关风扇的问题，~~因为切换到了VirtualSMC，所以目前没有办法采集到风扇信息，但是不会影响风扇正常运转。目前没有解决方案，一旦有解决方案我会同步更新。~~ 目前双风扇均已显示转速并可控。（需要注意的是无法精准控制风扇转速，这是自身的硬件决定的）
+* 目前的OC-A引导Windows已知问题是：会使QuickSet64中部分（显示Fn锁和数字键盘锁的托盘图标）失效。目前并没有解决方案。
+* 目前双风扇均已显示转速，可使用Macs Fan Control控制转速。（无法精准控制风扇转速，这是自身的硬件决定的）
 * 注意，在睡眠唤醒后低音炮可能会无声，调节一下音量即可。
 #### [回到目录](#目录)
 
@@ -47,8 +45,8 @@
   * 7567的HDMI接口是直连独显的，这会导致HDMI接口无法使用。
   * 由于Optimus技术，7567的独显1050Ti即使在10.13及以下MacOS版本也是无法驱动的。
 * Intel Wireless 3165
-    * 目前WIFi部分驱动不完善，速度不理想，客户端功能不完善。
-    * 目前无法使用 ~~“接力”，~~ “隔空投送”（ ~~大概率以后~~ 暂时不支持）。
+    * 目前WIFi部分驱动不完善，速度不理想。
+    * 目前无法使用 “隔空投送”。
     
   ****
   
