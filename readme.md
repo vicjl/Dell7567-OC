@@ -38,6 +38,7 @@
 * 目前的OC-A引导Windows已知问题是：会使QuickSet64中部分（显示Fn锁和数字键盘锁的托盘图标）失效。目前并没有解决方案。
 * 目前双风扇均已显示转速，可使用Macs Fan Control控制转速。（无法精准控制风扇转速，这是自身的硬件决定的）
 * 注意，在睡眠唤醒后低音炮可能会无声，调节一下音量即可。
+* ***如果出现有线网卡无法使用的情况，请切换RealtekRTL8111.kext至2.2.2版本*** 
 #### [回到目录](#目录)
 
 ## 目前无法驱动的硬件
@@ -83,6 +84,13 @@ A: 节选自网上的解释：
 #### [回到目录](#目录)
 
 ## 自第五版起仅保留最近两次更新日志，其余日志已转移至博客
+
+### 2021.01.19 更新第六版
+* 正式支持Big Sur 11.0
+* 常规驱动更新
+ * 更新RealtekRTL8111.kext 至2.4.0b6，尝试解决2.3.0版本必须手动配置硬件才能使用的问题（即2.3.0无法使用有线联网问题）
+ * 新版Whatevergreen.kext解决Big Sur 11.0 4k问题
+ 
 ### 2020.11.15 更新第第五版
 * 支持big sur 11.0
 * 修复部分用户无法调节亮度的问题
@@ -91,19 +99,6 @@ A: 节选自网上的解释：
 * 常规驱动更新
 * Intel网卡用户注意，该版本使用AirportItlwm作为wifi驱动，使用原生gui，无需使用heliport。定位，接力，智能热点已经可以使用（需要更多反馈）（仅10.15和11.0可使用，其余版本请使用itlwm）
 * 添加一键解锁CFG和检查CFG锁状态，对应OC菜单中的UnlockCFGLock以及Check CFGLock，（一键解锁CFG的efi由群友 '虐情' 提供）
-
-### 2020.8.15 更新第四版
-* 常规驱动更新
-  * 需要注意，AirportBrcmFixup的PlugIns中含有两个驱动，已在Config中注明，并添加了最小最大内核限制，博通网卡用户可以把涉及WIFI的三个驱动全部选上，OC会根据你使用的系统版本选择对应驱动。
-  * DW1820a网卡用户需要注意，在11.0 Big Sur 里，需要DeviceProperties中添加WIFI设备，并在常规添加的基础上添加名为compatible的键，字符类型，值为pci14e4,43a0。（由Q群群友`虐情`提供）
-  * 添加驱动SystemProfilerMemoryFixup用来在“关于本机”中显示内存项，但是在11.0中暂不可用，原因同下。
-  *  由于11.0禁用了CoreDisplay的用户空间修补， 所以4K屏暂时只能通过EDID将输出改为4K 48Hz以正常显示，暂时不建议4K屏用户更新11.0。原文`The user patcher used for Coredisplay was disabledin Lilu on Big Sur. So other kexts / functions relying on it such asSystemProfilerMemoryFixup should have broken as well. Just waitfor a fully functional Lilu first.`截取自`zhen-zen`在`Acidanthera`的`#1024Issue`中。
-* 常规软件更新
-* 尝试支持MacOS11.0 Big Sur，目前可进行11.0的全新安装
-  * 11.0仍处于beta阶段，所以在11.0中遇到的任何问题都需要自行解决。目前只支持到当前的最新测试版（Beta4和Public Beta 1）。
-* 添加、修改部分ACPI补丁
-* 其他改进
-* 由于OC-NDK版未更新，所以此次更新不包括OC-NDK版
 
 # 图集
 
