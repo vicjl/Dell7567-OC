@@ -5,7 +5,7 @@
 	<key>KeepAlive</key>
 	<true/>
 	<key>Label</key>
-	<string>com.7567.ComboJack</string>
+	<string>com.XPS.ComboJack</string>
 	<key>ProgramArguments</key>
 	<array>
 		<string>/usr/local/sbin/ComboJack</string>
