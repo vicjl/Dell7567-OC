@@ -62,7 +62,7 @@
 
 |微信:wink: |支付宝:wink:|
 | :-: | :-: |
-|<img src="https://gitee.com/vicjl/pic/raw/master/img/wechat.jpg" alt="微信" />|<img src="https://gitee.com/vicjl/pic/raw/master/img/ali.jpg" alt="支付宝" />|
+|<img src="https://raw.githubusercontent.com/vicjl/pic/main/wechat.jpg" alt="微信" />|<img src="https://raw.githubusercontent.com/vicjl/pic/main/ali.jpg" alt="支付宝" />|
 
 # Q&A
 ### Q:这是什么？
