@@ -5,25 +5,22 @@
 * 2. 下载镜像，可以从黑果小兵的部落阁下载（[下载链接](https://blog.daliansky.net/categories/%E4%B8%8B%E8%BD%BD/)），选择系统，单击之后往下滑动找到下载处，使用双EFI版本的就行
 <img src="https://gitee.com/vicjl/pic/raw/master/img/dmg.jpg" alt="dmg" />
 
-* 3. 使用 [etcher](https://www.balena.io/etcher/) 向U盘写入镜像
+* 3. 使用 [etcher(点我下载)](https://www.balena.io/etcher/) 向U盘写入镜像
 
 <img src="https://gitee.com/vicjl/pic/raw/master/img/etcher1.jpg" alt="etcher" />
 
 ## 下载引导及替换
-* 1.  ***通过Release下载新的OC-A*** ，下载完成后解压，得到BOOT和OC两个文件夹。
+* 1.  ***通过Release下载新的OC-A、OC-MOD*** ，下载完成后解压，得到BOOT和OC两个文件夹。
 * 2. 将两个文件夹替换到U盘对应位置（即U盘的OC或ESP分区）或放在系统ESP中，这两个文件夹均为EFI文件夹的子文件夹。
-* 3. 如果不显示盘符，可以通过 ***其他工具挂载或直接复制*** ，例如使用 [***DiskGenius***](https://www.diskgenius.cn/download.php) 软件进行写入，挂载操作（DiskGenius仅在Windows提供）。
+* 3. 如果不显示盘符，可以通过 ***其他工具挂载或直接复制*** ，例如使用 [***DiskGenius(点我下载)***](https://www.diskgenius.cn/download.php) 软件进行写入，挂载操作（DiskGenius仅在Windows提供）。
 ### 建议将系统的ESP分区扩容至300MB以上，以免出现其他问题
 ### Tips：将OC-A中的BOOT、OC文件夹复制到系统ESP分区的EFI文件夹中可以免U盘启动
 
 ## 安装及使用
  ***前提：*** 
 * BIOS设置:
-  * 设置 `SATA Mode`为 `AHCI` ，自行百度；
-  * 关闭 `Legacy Option ROMs`；
+  * 设置 `SATA Mode`为 `AHCI` ；
   * 关闭 `Secure Boot`；
-  * 关闭 `VT ` (最好)；
-  * 关闭 SGX；
 #### 注意，将 `SATA Mode` 由 `Raid On` 修改为 `AHCI` 会使win无法正常启动，解决方法自行百度
 
 ### 添加启动项
@@ -54,9 +51,9 @@
 <img src="https://gitee.com/vicjl/pic/raw/master/img/choose.jpg" alt="choose" />
 
 
-* 2. 使用oc引导，进入引导后, ***按空格*** ，选择CheckCFGLock，检查当前是否已解锁CFG，若已解锁，可进行下一步，若未解锁，使用UnlockCFGLock，之后的界面输入y，重启并再次检查是否解锁，若仍未解锁，请再次尝试或按照其他方式解锁
+* 2. 使用oc引导，进入引导后, ***按空格*** ，选择 `modGRUBShell` ，检查当前是否已解锁CFG，若已解锁，可进行下一步，若未解锁，使用modGRUBShell.efi，之后的界面输入 `setup_var_3 0x4DE 0x00` (注意大小写)，之后输入 `reboot` 并再次检查是否解锁
 
-<img src="https://gitee.com/vicjl/pic/raw/master/img/unlock.jpg" alt="unlock" />
+
 <img src="https://gitee.com/vicjl/pic/raw/master/img/check.jpg" alt="check" />
 
 #### 现在可以使用OC引导系统了

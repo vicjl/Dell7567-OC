@@ -1,13 +1,15 @@
 <img src="https://gitee.com/vicjl/pic/raw/master/img/OpenCore_with_text_Small.png" width="200" height="48"/>
 
-## ***这是一个适用于Dell7567机型的OpenCore版本驱动。***
-* [Github](https://github.com/vicjl/Dell7567-OC)仓库已同步至[Gitee](https://gitee.com/vicjl/Dell7567-OC)，两个仓库会同步更新，如果出现Github图片加载不全或release下载失败等情况请通过Gitee访问。有问题尽量在Github或者Q群提问
+# ***此OpenCore适用于Dell7567***
+## ***使用前请仔细阅读本文***
+## ***请点击下方或右侧的“Releases”[(Github)](https://github.com/vicjl/Dell7567-OC)“发行版”[(Gitee)](https://gitee.com/vicjl/Dell7567-OC)下载***
+* Dell7567-OC Release版本：[![点我下载](https://img.shields.io/github/v/release/vicjl/Dell7567-OC?color=green&include_prereleases&label=Download)](https://github.com/vicjl/Dell7567-OC/releases)  ***（若无法打开，请尝试点击右侧的 `Releases` 或 `发行版` 下载最新版本 ，不要点上面的下载！）*** 
+* [Github](https://github.com/vicjl/Dell7567-OC)仓库已同步至[Gitee](https://gitee.com/vicjl/Dell7567-OC)，两个仓库会同步更新，如果出现 ***Github图片加载不全或release下载失败等*** 情况请通过Gitee访问。有问题请在Github或Q群提问
 * 交流QQ群：320693336  进群验证为机型加OC，例：Dell7567-OC
-* Dell7567-OC Release版本：[![Release](https://img.shields.io/github/v/release/vicjl/Dell7567-OC?color=green&include_prereleases&label=Release)](https://github.com/vicjl/Dell7567-OC/releases)  ***（新手请点击该图标下载OC-A若无法打开，请尝试点击右侧的 `Releases` 或 `发行版` 下载最新版本 ，不要点上面的下载，不要点上面的下载，不要点上面的下载！）*** 
-* 目前为止，包括i2c触控板，亮度快捷键，睡眠唤醒，耳麦，2.1声道都是完美的，使用过程中如果遇到什么问题请及时交流沟通。
+* i2c触控板，亮度快捷键，睡眠唤醒，耳麦，2.1声道均可正常使用。
 * 该项目使用ComboJack作为耳麦驱动，需要使用ComboJack_For_Dell7567_Only中的文件安装切换弹窗部分，详细安装说明包含在文件中
-*  已经支持Big Sur且后续更新不包含OC-NDK版
-* 使用本OC必须解锁CFG，菜单中已经包含一键解锁选项
+*  该版计划支持MacOS12（OC-A、OC-MOD），OC-NDK版不再更新
+* 使用本OC推荐解锁CFG，新手教程有详细步骤
 * 如果你是纯新手，点 [纯新手教程](./readme-for-new-user.md)
 ****
 # 配置详情
@@ -38,20 +40,18 @@
 * 目前的OC-A引导Windows已知问题是：会使QuickSet64中部分（显示Fn锁和数字键盘锁的托盘图标）失效。目前并没有解决方案。
 * 目前双风扇均已显示转速，可使用Macs Fan Control控制转速。（无法精准控制风扇转速，这是自身的硬件决定的）
 * 注意，在睡眠唤醒后低音炮可能会无声，调节一下音量即可。
-* 收到部分用户反馈：bios版本更新后会使低音单元无声，本人测试没有出现该问题，但仍不建议用户更新新版bios。
+* 收到部分用户反馈：bios版本更新后会使低音单元无声，故不建议用户更新新版bios。
 * ***如果出现有线网卡无法使用的情况，请切换RealtekRTL8111.kext至2.2.2版本*** 
-#### [回到目录](#目录)
 
+****
 ## 目前无法驱动的硬件
-* NVIDIA GTX1050Ti（没有解决方案且以后应该也不会有）
+* NVIDIA GTX1050Ti（无解决方案）
   * 7567的HDMI接口是直连独显的，这会导致HDMI接口无法使用。
   * 由于Optimus技术，7567的独显1050Ti即使在10.13及以下MacOS版本也是无法驱动的。
 * Intel Wireless 3165
-    * 目前WIFi部分驱动不完善，速度不理想。
     * 目前无法使用 “隔空投送”。
     
   ****
-  
 ## 安装说明
 * 内容已移至新手教程
 #### 使用方向键选择启动项后，按`Ctrl+Enter`键可以选择该项为默认启动项
@@ -67,9 +67,6 @@
 # Q&A
 ### Q:这是什么？
 A:  这是一个适用于Dell7567机型的OpenCore版本驱动。
-
-### Q: 我怎么没有看到博客地址？
-A:博客尚未搭建完成，搭建完成会更新到readme.md里的
 
 ### Q:为什么使用本OC启动后不管无线网卡是什么都不能用？
 A:为了该OC可以普遍适用于博通、英特尔网卡，并且为了避免一些卡死，崩溃之类的问题，默认没有勾选网卡驱动，请根据实际情况自行勾选。
@@ -91,7 +88,13 @@ A: 节选自网上的解释：
 # 更新日志
 #### [回到目录](#目录)
 
-## 自第五版起仅保留最近两次更新日志，其余日志已转移至博客
+## 自第五版起Readme.md仅保留最近两次更新日志
+
+### 2022.01.xx 计划更新第八版
+* 常规驱动更新
+* 常规OC更新
+* 适配MacOS12
+* 该版变化不大，如有问题请在群里提问或在Github提问，如遇无法启动等问题请先切换回旧版使用，反馈后等待更新
 
 ### 2021.06.09 更新第七版
 * 常规驱动更新
