@@ -3,7 +3,7 @@
 ## ***这是一个适用于Dell7567机型的OpenCore版本驱动。***
 * [Github](https://github.com/vicjl/Dell7567-OC)仓库已同步至[Gitee](https://gitee.com/vicjl/Dell7567-OC)，两个仓库会同步更新，如果出现Github图片加载不全或release下载失败等情况请通过Gitee访问。有问题尽量在Github或者Q群提问
 * 交流QQ群：320693336  进群验证为机型加OC，例：Dell7567-OC
-* Dell7567-OC Release版本：[![Release](https://img.shields.io/github/v/release/vicjl/Dell7567-OC?color=green&include_prereleases&label=Release)](https://github.com/vicjl/Dell7567-OC/releases)  ***（新手请点击该图标下载OC-A若无法打开，请尝试点击右侧的 `Releases` 或 `发行版` 下载最新版本 ，不要点上面的下载）*** 
+* Dell7567-OC Release版本：[![Release](https://img.shields.io/github/v/release/vicjl/Dell7567-OC?color=green&include_prereleases&label=Release)](https://github.com/vicjl/Dell7567-OC/releases)  ***（新手请点击该图标下载OC-A若无法打开，请尝试点击右侧的 `Releases` 或 `发行版` 下载最新版本 ，不要点上面的下载，不要点上面的下载，不要点上面的下载！）*** 
 * 目前为止，包括i2c触控板，亮度快捷键，睡眠唤醒，耳麦，2.1声道都是完美的，使用过程中如果遇到什么问题请及时交流沟通。
 * 该项目使用ComboJack作为耳麦驱动，需要使用ComboJack_For_Dell7567_Only中的文件安装切换弹窗部分，详细安装说明包含在文件中
 *  已经支持Big Sur且后续更新不包含OC-NDK版
