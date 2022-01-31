@@ -3,6 +3,7 @@
 # ***此OpenCore适用于Dell7567***
 ## ***使用前请仔细阅读本文***
 ## ***请点击下方或右侧的“Releases”[(Github)](https://github.com/vicjl/Dell7567-OC)“发行版”[(Gitee)](https://gitee.com/vicjl/Dell7567-OC)下载***
+* 1月更新群内测试出现问题，目前本人电脑损坏无法测试，一月更新延迟发布
 * Dell7567-OC Release版本：[![点我下载](https://img.shields.io/github/v/release/vicjl/Dell7567-OC?color=green&include_prereleases&label=Download)](https://github.com/vicjl/Dell7567-OC/releases)  ***（若无法打开，请尝试点击右侧的 `Releases` 或 `发行版` 下载最新版本 ，不要点上面的下载！）*** 
 * [Github](https://github.com/vicjl/Dell7567-OC)仓库已同步至[Gitee](https://gitee.com/vicjl/Dell7567-OC)，两个仓库会同步更新，如果出现 ***Github图片加载不全或release下载失败等*** 情况请通过Gitee访问。有问题请在Github或Q群提问
 * 交流QQ群：320693336  进群验证为机型加OC，例：Dell7567-OC
